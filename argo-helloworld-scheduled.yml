@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  labels:
+    workflows.argoproj.io/archive-strategy: "false"
+  annotations:
+    workflows.argoproj.io/description: |
+      This is a simple hello world example using cron.
+  name: hello-world-scheduled
+spec:
+  schedules:
+    - "* * * * *"
+  concurrencyPolicy: "Replace"
+  startingDeadlineSeconds: 0
+  workflowSpec:
+    entrypoint: hello-world
+    templates:
+    - name: hello-world
+      container:
+        image: busybox
+        command: [echo]
+        args: ["hello world $(date)"]
