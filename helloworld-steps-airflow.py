@@ -11,7 +11,7 @@ with DAG(
     default_args=default_args,
     schedule_interval=None,
     catchup=False,
-    description='Argo-style steps: 'This is a simple hello world example using steps. hello1 -> [hello2a, hello2b]',
+    description='Argo-style steps: This is a simple hello world example using steps. hello1 -> [hello2a, hello2b]',
 ) as dag:
 
     hello1 = BashOperator(
